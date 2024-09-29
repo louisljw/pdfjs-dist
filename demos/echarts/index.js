@@ -39,19 +39,19 @@ option = {
     triggerOn: 'click',
     appendTo: document.getElementById('content'),
     position: (point, params, don, react, size) => {
+      const scrollTop = document.getElementById('content').scrollTop;
       if (point && point.length === 2) {
         return [
           point[0] - size.contentSize[0] / 2,
-          point[1] - size.contentSize[1],
+          point[1] - size.contentSize[1] - scrollTop,
         ];
       }
       return [
         window.currentX - size.contentSize[0] / 2,
-        window.currentY - size.contentSize[1],
+        window.currentY - size.contentSize[1] - scrollTop,
       ];
     },
   },
-  format: () => {},
 };
 
 if (option && typeof option === 'object') {
