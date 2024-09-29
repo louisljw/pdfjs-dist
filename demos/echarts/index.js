@@ -40,3 +40,12 @@ if (option && typeof option === 'object') {
 }
 
 window.addEventListener('resize', myChart.resize);
+document.getElementById('content').addEventListener('scroll', () => {
+  myChart.dispatchAction({
+    type: 'hideTip',
+  });
+});
+document.addEventListener('touchmove', (e) => {
+  console.log('移动端点击事件');
+  console.log(e);
+});
