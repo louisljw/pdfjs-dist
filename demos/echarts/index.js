@@ -19,11 +19,14 @@ option = {
     {
       data: [150, 230, 224, 218, 135, 147, 260],
       type: 'line',
+      symbol: 'circle',
+      symbolSize: [18, 18],
     },
   ],
   tooltip: {
     show: true,
     trigger: 'item',
+    triggerOn: 'click',
     appendTo: document.getElementById('content'),
     position: 'top',
   },
