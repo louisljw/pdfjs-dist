@@ -7,6 +7,10 @@ var app = {};
 
 var option;
 
+var formatTooltip = (params) => {
+  return `<div>${params.seriesName}: ${params.value}</div>`;
+};
+
 option = {
   xAxis: {
     type: 'category',
@@ -23,16 +27,31 @@ option = {
       symbolSize: [18, 18],
     },
   ],
+  format: (params, ticket, callback) => {
+    setTimeout(() => {
+      callback(ticket, formatTooltip(params));
+    }, 1);
+    return formatTooltip(params);
+  },
   tooltip: {
     show: true,
     trigger: 'item',
     triggerOn: 'click',
     appendTo: document.getElementById('content'),
-    position: (point, params) => {
-      console.log(point);
-      return 'top';
+    position: (point, params, don, react, size) => {
+      if (point && point.length === 2) {
+        return [
+          point[0] - size.contentSize[0] / 2,
+          point[1] - size.contentSize[1],
+        ];
+      }
+      return [
+        window.currentX - size.contentSize[0] / 2,
+        window.currentY - size.contentSize[1],
+      ];
     },
   },
+  format: () => {},
 };
 
 if (option && typeof option === 'object') {
@@ -46,6 +65,10 @@ document.getElementById('content').addEventListener('scroll', () => {
   });
 });
 document.addEventListener('touchmove', (e) => {
-  console.log('移动端点击事件');
-  console.log(e);
+  console.log([
+    e.originalEvent.touches[0].pageX,
+    e.originalEvent.touches[0].pageY,
+  ]);
+  window.currentX = e.originalEvent.touches[0].pageX;
+  window.currentY = e.originalEvent.touches[0].pageY;
 });
