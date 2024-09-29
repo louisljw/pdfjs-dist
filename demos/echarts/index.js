@@ -65,10 +65,7 @@ document.getElementById('content').addEventListener('scroll', () => {
   });
 });
 document.addEventListener('touchmove', (e) => {
-  console.log([
-    e.originalEvent.touches[0].pageX,
-    e.originalEvent.touches[0].pageY,
-  ]);
-  window.currentX = e.originalEvent.touches[0].pageX;
-  window.currentY = e.originalEvent.touches[0].pageY;
+  console.log([e.touches[0].pageX, e.touches[0].pageY]);
+  window.currentX = e.touches[0].pageX;
+  window.currentY = e.touches[0].pageY;
 });
