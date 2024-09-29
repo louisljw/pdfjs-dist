@@ -28,7 +28,10 @@ option = {
     trigger: 'item',
     triggerOn: 'click',
     appendTo: document.getElementById('content'),
-    position: 'top',
+    position: (point, params) => {
+      console.log(point);
+      return 'top';
+    },
   },
 };
 
