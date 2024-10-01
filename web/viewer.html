@@ -32,11 +32,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     <!-- This snippet is used in production (included from viewer.html) -->
     <link rel="resource" type="application/l10n" href="locale/locale.json" />
-    <script src="https://cdn.bootcss.com/vConsole/3.2.2/vconsole.min.js"></script>
-    <script>
-      var vConsole = new VConsole();
-      console.log('hello world');
-    </script>
     <script src="../build/pdf.mjs" type="module"></script>
 
     <link rel="stylesheet" href="viewer.css" />
@@ -1014,7 +1009,7 @@ See https://github.com/adobe-type-tools/cmap-resources
       <!-- mainContainer -->
 
       <div id="dialogContainer">
-        <dialog id="passwordDialog">
+        <div id="passwordDialog">
           <div class="row">
             <label
               for="password"
@@ -1034,8 +1029,8 @@ See https://github.com/adobe-type-tools/cmap-resources
               <span data-l10n-id="pdfjs-password-ok-button">OK</span>
             </button>
           </div>
-        </dialog>
-        <dialog id="documentPropertiesDialog">
+        </div>
+        <div id="documentPropertiesDialog">
           <div class="row">
             <span
               id="fileNameLabel"
@@ -1161,8 +1156,8 @@ See https://github.com/adobe-type-tools/cmap-resources
               >
             </button>
           </div>
-        </dialog>
-        <dialog
+        </div>
+        <div
           class="dialog altText"
           id="altTextDialog"
           aria-labelledby="dialogLabel"
@@ -1260,8 +1255,8 @@ See https://github.com/adobe-type-tools/cmap-resources
               </button>
             </div>
           </div>
-        </dialog>
-        <dialog id="printServiceDialog" style="min-width: 200px">
+        </div>
+        <div id="printServiceDialog" style="min-width: 200px">
           <div class="row">
             <span data-l10n-id="pdfjs-print-progress-message"
               >Preparing document for printing…</span
@@ -1283,11 +1278,22 @@ See https://github.com/adobe-type-tools/cmap-resources
               >
             </button>
           </div>
-        </dialog>
+        </div>
       </div>
       <!-- dialogContainer -->
     </div>
     <!-- outerContainer -->
     <div id="printContainer"></div>
   </body>
+  <script>
+    var renderedPage = [];
+    // document.addEventListener('PageRendered', () => {
+    //   let page = window.PDFViewerApplication.page;
+    //   let pageCount = window.PDFViewerApplication.pagesCount;
+    //   renderedPage.push(page);
+    //   if (!renderedPage.includes(pageCount)) {
+    //     PDFViewerApplication.page = page + 1;
+    //   }
+    // });
+  </script>
 </html>
