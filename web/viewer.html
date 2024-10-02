@@ -32,13 +32,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     <!-- This snippet is used in production (included from viewer.html) -->
     <link rel="resource" type="application/l10n" href="locale/locale.json" />
-    <script src="https://cdn.bootcdn.net/ajax/libs/babel-polyfill/7.12.1/polyfill.js"></script>
-    <script src="https://cdn.bootcss.com/vConsole/3.2.2/vconsole.min.js"></script>
-    <script>
-      var vConsole = new VConsole();
-      console.log('hello world');
-      console.log('Babel added');
-    </script>
     <script src="../build/pdf.mjs" type="module"></script>
 
     <link rel="stylesheet" href="viewer.css" />
@@ -112,7 +105,7 @@ See https://github.com/adobe-type-tools/cmap-resources
           </div>
 
           <div id="toolbarSidebarRight">
-            <div id="outlineOptionsContainer">
+            <div id="outlineOptionsContainer" class="hidden">
               <div class="verticalToolbarSeparator"></div>
 
               <button
@@ -143,17 +136,15 @@ See https://github.com/adobe-type-tools/cmap-resources
       <div id="mainContainer">
         <div class="findbar hidden doorHanger" id="findbar">
           <div id="findbarInputContainer">
-            <span class="loadingInput end">
-              <input
-                id="findInput"
-                class="toolbarField"
-                title="Find"
-                placeholder="Find in document…"
-                tabindex="91"
-                data-l10n-id="pdfjs-find-input"
-                aria-invalid="false"
-              />
-            </span>
+            <input
+              id="findInput"
+              class="toolbarField"
+              title="Find"
+              placeholder="Find in document…"
+              tabindex="91"
+              data-l10n-id="pdfjs-find-input"
+              aria-invalid="false"
+            />
             <div class="splitToolbarButton">
               <button
                 id="findPrevious"
@@ -241,64 +232,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
         <div
           class="editorParamsToolbar hidden doorHangerRight"
-          id="editorHighlightParamsToolbar"
-        >
-          <div
-            id="highlightParamsToolbarContainer"
-            class="editorParamsToolbarContainer"
-          >
-            <div id="editorHighlightColorPicker" class="colorPicker">
-              <span
-                id="highlightColorPickerLabel"
-                class="editorParamsLabel"
-                data-l10n-id="pdfjs-editor-highlight-colorpicker-label"
-                >Highlight color</span
-              >
-            </div>
-            <div id="editorHighlightThickness">
-              <label
-                for="editorFreeHighlightThickness"
-                class="editorParamsLabel"
-                data-l10n-id="pdfjs-editor-free-highlight-thickness-input"
-                >Thickness</label
-              >
-              <div class="thicknessPicker">
-                <input
-                  type="range"
-                  id="editorFreeHighlightThickness"
-                  class="editorParamsSlider"
-                  data-l10n-id="pdfjs-editor-free-highlight-thickness-title"
-                  value="12"
-                  min="8"
-                  max="24"
-                  step="1"
-                  tabindex="101"
-                />
-              </div>
-            </div>
-            <div id="editorHighlightVisibility">
-              <div class="divider"></div>
-              <div class="toggler">
-                <label
-                  for="editorHighlightShowAll"
-                  class="editorParamsLabel"
-                  data-l10n-id="pdfjs-editor-highlight-show-all-button-label"
-                  >Show all</label
-                >
-                <button
-                  id="editorHighlightShowAll"
-                  class="toggle-button"
-                  data-l10n-id="pdfjs-editor-highlight-show-all-button"
-                  aria-pressed="true"
-                  tabindex="102"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="editorParamsToolbar hidden doorHangerRight"
           id="editorFreeTextParamsToolbar"
         >
           <div class="editorParamsToolbarContainer">
@@ -313,7 +246,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                 type="color"
                 id="editorFreeTextColor"
                 class="editorParamsColor"
-                tabindex="103"
+                tabindex="100"
               />
             </div>
             <div class="editorParamsSetter">
@@ -331,7 +264,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                 min="5"
                 max="100"
                 step="1"
-                tabindex="104"
+                tabindex="101"
               />
             </div>
           </div>
@@ -353,7 +286,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                 type="color"
                 id="editorInkColor"
                 class="editorParamsColor"
-                tabindex="105"
+                tabindex="102"
               />
             </div>
             <div class="editorParamsSetter">
@@ -371,7 +304,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                 min="1"
                 max="20"
                 step="1"
-                tabindex="106"
+                tabindex="103"
               />
             </div>
             <div class="editorParamsSetter">
@@ -389,7 +322,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                 min="1"
                 max="100"
                 step="1"
-                tabindex="107"
+                tabindex="104"
               />
             </div>
           </div>
@@ -404,12 +337,10 @@ See https://github.com/adobe-type-tools/cmap-resources
               id="editorStampAddImage"
               class="secondaryToolbarButton"
               title="Add image"
-              tabindex="108"
+              tabindex="105"
               data-l10n-id="pdfjs-editor-stamp-add-image-button"
             >
-              <span
-                class="editorParamsLabel"
-                data-l10n-id="pdfjs-editor-stamp-add-image-button-label"
+              <span data-l10n-id="pdfjs-editor-stamp-add-image-button-label"
                 >Add image</span
               >
             </button>
@@ -423,7 +354,7 @@ See https://github.com/adobe-type-tools/cmap-resources
           <div id="secondaryToolbarButtonContainer">
             <button
               id="secondaryOpenFile"
-              class="secondaryToolbarButton"
+              class="secondaryToolbarButton visibleLargeView"
               title="Open File"
               tabindex="51"
               data-l10n-id="pdfjs-open-file-button"
@@ -451,7 +382,7 @@ See https://github.com/adobe-type-tools/cmap-resources
               <span data-l10n-id="pdfjs-save-button-label">Save</span>
             </button>
 
-            <div class="horizontalToolbarSeparator"></div>
+            <div class="horizontalToolbarSeparator visibleLargeView"></div>
 
             <button
               id="presentationMode"
@@ -733,43 +664,57 @@ See https://github.com/adobe-type-tools/cmap-resources
                     <span data-l10n-id="pdfjs-next-button-label">Next</span>
                   </button>
                 </div>
-                <span class="loadingInput start">
-                  <input
-                    type="number"
-                    id="pageNumber"
-                    class="toolbarField"
-                    title="Page"
-                    value="1"
-                    min="1"
-                    tabindex="15"
-                    data-l10n-id="pdfjs-page-input"
-                    autocomplete="off"
-                  />
-                </span>
+                <input
+                  type="number"
+                  id="pageNumber"
+                  class="toolbarField"
+                  title="Page"
+                  value="1"
+                  min="1"
+                  tabindex="15"
+                  data-l10n-id="pdfjs-page-input"
+                  autocomplete="off"
+                />
                 <span id="numPages" class="toolbarLabel"></span>
               </div>
               <div id="toolbarViewerRight">
+                <button
+                  id="openFile"
+                  class="toolbarButton hiddenLargeView"
+                  title="Open File"
+                  tabindex="31"
+                  data-l10n-id="pdfjs-open-file-button"
+                >
+                  <span data-l10n-id="pdfjs-open-file-button-label">Open</span>
+                </button>
+
+                <button
+                  id="print"
+                  class="toolbarButton hiddenMediumView"
+                  title="Print"
+                  tabindex="32"
+                  data-l10n-id="pdfjs-print-button"
+                >
+                  <span data-l10n-id="pdfjs-print-button-label">Print</span>
+                </button>
+
+                <button
+                  id="download"
+                  class="toolbarButton hiddenMediumView"
+                  title="Save"
+                  tabindex="33"
+                  data-l10n-id="pdfjs-save-button"
+                >
+                  <span data-l10n-id="pdfjs-save-button-label">Save</span>
+                </button>
+
+                <div class="verticalToolbarSeparator hiddenMediumView"></div>
+
                 <div
                   id="editorModeButtons"
                   class="splitToolbarButton toggled"
                   role="radiogroup"
                 >
-                  <button
-                    id="editorHighlight"
-                    class="toolbarButton"
-                    hidden="true"
-                    disabled="disabled"
-                    title="Highlight"
-                    role="radio"
-                    aria-checked="false"
-                    aria-controls="editorHighlightParamsToolbar"
-                    tabindex="31"
-                    data-l10n-id="pdfjs-editor-highlight-button"
-                  >
-                    <span data-l10n-id="pdfjs-editor-highlight-button-label"
-                      >Highlight</span
-                    >
-                  </button>
                   <button
                     id="editorFreeText"
                     class="toolbarButton"
@@ -778,7 +723,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                     role="radio"
                     aria-checked="false"
                     aria-controls="editorFreeTextParamsToolbar"
-                    tabindex="32"
+                    tabindex="34"
                     data-l10n-id="pdfjs-editor-free-text-button"
                   >
                     <span data-l10n-id="pdfjs-editor-free-text-button-label"
@@ -793,7 +738,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                     role="radio"
                     aria-checked="false"
                     aria-controls="editorInkParamsToolbar"
-                    tabindex="33"
+                    tabindex="35"
                     data-l10n-id="pdfjs-editor-ink-button"
                   >
                     <span data-l10n-id="pdfjs-editor-ink-button-label"
@@ -808,7 +753,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                     role="radio"
                     aria-checked="false"
                     aria-controls="editorStampParamsToolbar"
-                    tabindex="34"
+                    tabindex="36"
                     data-l10n-id="pdfjs-editor-stamp-button"
                   >
                     <span data-l10n-id="pdfjs-editor-stamp-button-label"
@@ -823,32 +768,10 @@ See https://github.com/adobe-type-tools/cmap-resources
                 ></div>
 
                 <button
-                  id="print"
-                  class="toolbarButton hiddenMediumView"
-                  title="Print"
-                  tabindex="41"
-                  data-l10n-id="pdfjs-print-button"
-                >
-                  <span data-l10n-id="pdfjs-print-button-label">Print</span>
-                </button>
-
-                <button
-                  id="download"
-                  class="toolbarButton hiddenMediumView"
-                  title="Save"
-                  tabindex="42"
-                  data-l10n-id="pdfjs-save-button"
-                >
-                  <span data-l10n-id="pdfjs-save-button-label">Save</span>
-                </button>
-
-                <div class="verticalToolbarSeparator hiddenMediumView"></div>
-
-                <button
                   id="secondaryToolbarToggle"
                   class="toolbarButton"
                   title="Tools"
-                  tabindex="43"
+                  tabindex="48"
                   data-l10n-id="pdfjs-tools-button"
                   aria-expanded="false"
                   aria-controls="secondaryToolbar"
@@ -1165,12 +1088,11 @@ See https://github.com/adobe-type-tools/cmap-resources
           </div>
         </div>
         <div
-          class="dialog altText"
           id="altTextDialog"
           aria-labelledby="dialogLabel"
           aria-describedby="dialogDescription"
         >
-          <div id="altTextContainer" class="mainContainer">
+          <div id="altTextContainer">
             <div id="overallDescription">
               <span
                 id="dialogLabel"
@@ -1250,12 +1172,12 @@ See https://github.com/adobe-type-tools/cmap-resources
               </div>
             </div>
             <div id="buttons">
-              <button id="altTextCancel" class="secondaryButton" tabindex="0">
+              <button id="altTextCancel" tabindex="0">
                 <span data-l10n-id="pdfjs-editor-alt-text-cancel-button"
                   >Cancel</span
                 >
               </button>
-              <button id="altTextSave" class="primaryButton" tabindex="0">
+              <button id="altTextSave" tabindex="0">
                 <span data-l10n-id="pdfjs-editor-alt-text-save-button"
                   >Save</span
                 >
@@ -1291,16 +1213,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     </div>
     <!-- outerContainer -->
     <div id="printContainer"></div>
+
+    <input type="file" id="fileInput" class="hidden" />
   </body>
-  <script>
-    var renderedPage = [];
-    // document.addEventListener('PageRendered', () => {
-    //   let page = window.PDFViewerApplication.page;
-    //   let pageCount = window.PDFViewerApplication.pagesCount;
-    //   renderedPage.push(page);
-    //   if (!renderedPage.includes(pageCount)) {
-    //     PDFViewerApplication.page = page + 1;
-    //   }
-    // });
-  </script>
 </html>
